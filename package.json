@@ -1,0 +1,31 @@
+{
+  "name": "TodoApp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "watch-node": "nodemon",
+    "start": "tsc && yarn watch-node dist/index.js",
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^24.0.25",
+    "@types/node": "^8.10.22",
+    "jest": "^24.9.0",
+    "nodemon": "^1.18.3",
+    "ts-node": "^8.6.2",
+    "tslint": "5.12.1",
+    "tslint-config-prettier": "^1.14.0",
+    "typescript": "^4.3.2",
+    "webpack-filter-warnings-plugin": "^1.2.1"
+  },
+  "dependencies": {
+    "@types/mongoose": "^5.10.5",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.12",
+    "yup": "^0.32.9"
+  }
+}
