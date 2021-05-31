@@ -5,7 +5,7 @@ export default async (req, res) => {
         const myId = req.params.task_id;
         const filter = {id:myId}
         const task: ITask = await Task.findOneAndDelete(filter)
-        await close();
+        // await close();
         res.status(200).json(task);
     } catch (err) {
         res.status(500).json({

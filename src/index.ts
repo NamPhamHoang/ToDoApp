@@ -1,16 +1,19 @@
-import express from "express";
 import bodyParser from "body-parser";
-import {connect} from "./utils/database";
-import multer from "multer";
 import createTasks from "./routes/createTasks";
-import listTasks from "./routes/listTasks";
 import deleteTask from "./routes/deleteTask";
-import updateTask from "./routes/updateTask";
+// tslint:disable-next-line:ordered-imports
+import express from "express";
+import multer from "multer";
+import listTasks from "./routes/listTasks";
+// tslint:disable-next-line:ordered-imports
 import path from "path";
+import updateTask from "./routes/updateTask";
+import {connect} from "./utils/database";
+
 const PORT = 3000;
 const app = express();
 
-// connect();
+connect();
 app.use(
     bodyParser.urlencoded({
         extended: true,
@@ -41,7 +44,7 @@ app.get("/listTask", listTasks)
 
 app.get("/delete/:task_id", deleteTask)
 
-app.post("/update/:task_id", updateTask)
+app.post("/update/", updateTask)
 
 app.listen(PORT, () => {
     console.log(`> The application is running on PORT ${PORT}`)
