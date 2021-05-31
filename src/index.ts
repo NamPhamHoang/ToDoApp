@@ -37,7 +37,25 @@ app.use("/uploads", express.static('./src/uploads'));
 app.post("/createTask", createTasks)
 
 app.post("/uploadFile", tempUpload.single("file"), async (req, res) => {
-    console.log(req.file)
+    try {
+        if(req.file !== undefined) {
+            res.status(200).json({
+                isError: false,
+                payload: "Upload Success"
+            })
+        } else {
+            res.status(200).json({
+                isError: false,
+                payload: "Please choose file"
+            })
+        }
+     
+    } catch(err) {
+        res.status(500).json({
+            isError: true,
+            payload: err.toString()
+        })
+    }
 })
 
 app.get("/listTask", listTasks)
