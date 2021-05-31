@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import { close } from "../utils/database";
 import Task, {ITask} from "../models/Task";
 
 const BodySchema = Yup.object().shape({
@@ -19,14 +20,15 @@ export default async (req, res) => {
             banner,
             status
         } = req.body
-        const task: ITask = await Task.create({
-            id,
-            title,
-            description,
-            banner,
-            status,
-        })
-        res.status(200).json(task);
+        // const task: ITask = await Task.create({
+        //     id,
+        //     title,
+        //     description,
+        //     banner,
+        //     status,
+        // })
+        // await close();
+        // res.status(200).json(task);
     } catch (err) {
         res.status(500).json({
             isError: true,

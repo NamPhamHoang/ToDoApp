@@ -16,4 +16,18 @@ export const connect = () => {
         }
       });
 };
+
+export const close = () => {
+  return new Promise<void>(async (resolve, reject) => {
+    try {
+      console.log("[Database] Disconnecting");
+      await mongoose.connection.close()
+      console.log("[Database] Disonnected");
+      return resolve();
+    } catch (error) {
+      console.log(error);
+      return reject();
+    }
+  });
+}
   
