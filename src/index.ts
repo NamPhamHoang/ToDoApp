@@ -31,14 +31,12 @@ const groupStore = multer.diskStorage({
 const tempUpload = multer({
     storage: groupStore
 })
-
 app.use(bodyParser.json())
-
 app.use(NotFound)
 app.use("/uploads", express.static('./src/uploads'));
-
+app.get("/listTask", listTasks)
+app.get("/delete/:task_id", deleteTask)
 app.post("/createTask", validateMiddleWare, createTasks)
-
 app.post("/uploadFile", tempUpload.single("file"), async (req, res) => {
     try {
         if(req.file !== undefined) {
@@ -56,13 +54,7 @@ app.post("/uploadFile", tempUpload.single("file"), async (req, res) => {
         })
     }
 })
-
-app.get("/listTask", listTasks)
-
-app.get("/delete/:task_id", deleteTask)
-
 app.post("/update/", validateMiddleWare, updateTask)
-
 app.listen(PORT, () => {
     console.log(`> The application is running on PORT ${PORT}`)
 })
